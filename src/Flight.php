@@ -96,7 +96,7 @@ class Flight
 
     function getDepartCities()
     {
-        $query = $GLOBALS['DB']->query("SELECT depart_city_id FROM cities_flights WHERE flight_id = $this->getId();");
+        $query = $GLOBALS['DB']->query("SELECT depart_city_id FROM cities_flights WHERE flight_id = {$this->getId()};");
         $depart_ids = $query->fetchAll(PDO::FETCH_ASSOC);
 
         $departs = array();
@@ -115,7 +115,7 @@ class Flight
 
     function getArrivalCities()
     {
-        $query = $GLOBALS['DB']->query("SELECT arrival_city_id FROM cities_flights WHERE flight_id = $this->getId();");
+        $query = $GLOBALS['DB']->query("SELECT arrival_city_id FROM cities_flights WHERE flight_id = {$this->getId()};");
         $arrival_ids = $query->fetchAll(PDO::FETCH_ASSOC);
 
         $arrivals = array();
