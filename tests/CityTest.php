@@ -18,6 +18,13 @@
 
     class CityTest extends PHPUnit_Framework_TestCase
     {
+
+        protected function tearDown()
+        {
+          City::deleteAll();
+        //   Flight::deleteAll();
+        }
+
         function testSetName()
         {
             //Arrange
@@ -74,9 +81,45 @@
             $this->assertEquals($test_city, $result[0]);
         }
 
+        function testGetAll()
+        {
+            //Arrange
+            $name = "Portland, OR";
+            $id = null;
+            $test_city = new City($name, $id);
+            $test_city->save();
 
+            $name2 = "Chicago, Il";
+            $id2 = null;
+            $test_city2 = new City($name2, $id2);
+            $test_city2->save();
 
+            //Act
+            $result = City::getAll();
 
+            //Assert
+            $this->assertEquals([$test_city, $test_city2], $result);
+        }
+
+        function deleteAll()
+        {
+            //Arrange
+            $name = "Portland, OR";
+            $id = null;
+            $test_city = new City($name, $id);
+            $test_city->save();
+
+            $name2 = "Chicago, Il";
+            $id2 = null;
+            $test_city2 = new City($name2, $id2);
+            $test_city2->save();
+
+            //Act
+            $result = City::deleteAll();
+
+            //Assert
+            $this->assertEquals([], $result);
+        }
 
 
     }
