@@ -9,7 +9,7 @@
     //phpunit tests
 
     require_once "src/City.php";
-    //require_once "src/Flight.php";
+    require_once "src/Flight.php";
 
     $server = 'mysql:host=localhost;dbname=airline_planner_test';
     $username = 'root';
@@ -22,7 +22,7 @@
         protected function tearDown()
         {
           City::deleteAll();
-        //   Flight::deleteAll();
+          Flight::deleteAll();
         }
 
         function testSetName()
@@ -120,6 +120,44 @@
             //Assert
             $this->assertEquals([], $result);
         }
+
+        function testfind()
+        {
+            //Arrange
+            $name = "Portland, OR";
+            $id = null;
+            $test_city = new City($name, $id);
+            $test_city->save();
+
+            $name2 = "Chicago, Il";
+            $id2 = null;
+            $test_city2 = new City($name2, $id2);
+            $test_city2->save();
+
+            //Act
+            $result = City::find($test_city->getId());
+
+            //Assert
+            $this->assertEquals($test_city, $result);
+        }
+
+        // function testGetFlights()
+        // {
+        //     //Arrange
+        //     $name = "Portland, OR";
+        //     $id = null;
+        //     $test_city = new City($name, $id);
+        //     $test_city->save();
+        //
+        //     //Arrange
+        //     $depart_time = "12/12/2012 11:19";
+        //     $id = null;
+        //     $status = "on time";
+        //     $test_flight = new Flight($depart_time, $status, $id);
+        //     $test_flight->save();
+        //
+        //
+        // }
 
 
     }
