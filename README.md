@@ -8,15 +8,6 @@
 
 _{An application that allows a user to plan their flights from city to city. They can add a city to a list of cities with airline service as well as add a flight to a list of flights. The flight will include a departure time, departure city and arrival destinations. The user can change the status of an individual flight to either "on time", "delayed", "cancelled" or "complete".}_
 
-## Specifications
-
-| Behavior      | Input       |Output|
-| ------------- |-------------| -----|
-| Behavior |Input | Output |
-| Behavior |Input | Output |
-| Behavior |Input | Output |
-
-
 ## Setup/Installation Requirements
 
 * Clone the repository.
